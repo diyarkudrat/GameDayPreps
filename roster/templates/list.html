@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<a class="btn btn-outline-info" href="{% url 'player-create-page' %}" role="button">Add New Player</a>
+
+  {% if players %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Position</th>
+          <th scope="col">Grade</th>
+        </tr>
+      </thead>
+      {% for player in players %}
+      <tbody>
+        <tr>
+          <th scope="row">{{ player.jersey_number }}</th>
+          <td>{{ player.first_name }} {{ player.last_name }}</td>
+          <td>{{ player.position }}</td>
+          <td>{{ player.grade }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+{% endblock %}
