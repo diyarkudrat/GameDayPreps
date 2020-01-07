@@ -14,11 +14,14 @@
         <form class="form-inline ml-auto">
           {% if request.user.is_authenticated %}
               <div class="text-white">Hello, {{ request.user.username }}</div>
-              <a href="#" class="btn btn-warning ml-4">New Article</a>
-              <a href="#" class="btn btn-danger ml-2">Log Out</a>
+              <a href="{% url 'roster-list-page' %}" class="btn btn-warning ml-4">Roster</a>
+              <a href="#" class="btn btn-warning ml-4">Schedule</a>
+              <a href="{% url 'logout' %}" class="btn btn-danger ml-2">Log Out</a>
           {% else %}
-              <a href="#" class="btn btn-secondary ml-2">Log In</a>
-              <a href="#" class="btn btn-success ml-2">Sign Up</a>
+              <a href="#" class="btn btn-warning ml-4">About</a>
+              <a href="#" class="btn btn-warning ml-4">Contact</a>
+              <a href="{% url 'login' %}" class="btn btn-secondary ml-2">Log In</a>
+              <a href="{% url 'signup-page' %}" class="btn btn-success ml-2">Sign Up</a>
           {% endif %}
         </form>
       </nav>
