@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views import View
+from django.views.generic.edit import CreateView
+from django.views.generic.edit import DeleteView
 from django.http import HttpResponseRedirect
 from roster.models import Player
 from roster.forms import PlayerForm
@@ -33,13 +34,10 @@ class PlayerCreateView(CreateView):
 
         return render(request, 'new.html', {'form': form})
 
-class PlayerDetailView(DetailView):
-
-    model = Player
-
-    def get(self, request, slug):
- 
-        player = get_object_or_404(Player, slug=slug)
-        return render(request, 'player.html', context={'player': player})
+class PlayerDetailView(View):
+    def get(self, request, *args, **kwargs):
+        player = get_object_or_404(Player, pk=kwargs['pk'])
+        context = {'player': player }
+        return render(request, 'player_detail.html', context)
 
 
