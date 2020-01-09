@@ -25,6 +25,9 @@ urlpatterns = [
 
     path('', include('roster.urls')),
 
+    path('events/', include('events.urls'))
+
+
 
     
 ]

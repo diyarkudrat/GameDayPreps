@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Schedule</h1>
+
+{% for event in events %}
+<div class="card text-center">
+    <div class="card-title">
+      {{ event.date }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-header">{{ event.event_type }}</h5>
+      <p class="card-text">{{ event.time }}</p>
+      <p class="card-text">{{ event.location }}</p>
+      <a href="{% url 'event-detail-page' event.id %}" class="btn btn-primary">More Info</a>
+      <a href="{% url 'attendance-create-page' %}" class="btn btn-primary">Take Attendance</a>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
+  {% endfor %}
+
+{% endblock %}

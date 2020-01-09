@@ -1,7 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ player.first_name }}</h1>
-<h1>{{ player.last_name }}</h1>
+<form>
+    <fieldset disabled>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="disabledTextInput">First Name</label>
+        <input type="email" class="form-control" placeholder="{{ player.first_name }}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="disabledTextInput">Last Name</label>
+        <input type="password" class="form-control" placeholder="{{ player.last_name }}">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="disabledTextInput">Position</label>
+        <input type="text" class="form-control" placeholder="{{ player.position }}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="disabledTextInput">Grade</label>
+        <input type="text" class="form-control" placeholder="{{ player.grade }}">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="disabledTextInput">Number</label>
+        <input type="text" class="form-control" placeholder="{{ player.jersey_number }}">
+      </div>
+    </div>
+    </fieldset>
+    <a class="btn btn-info" href="{% url 'edit-player-profile' player.id %}" role="button">Edit</a>
+    <a class="btn btn-danger" href="{% url 'player-delete-page' player.id %}" role="button">Delete</a>
+  </form>
 
 {% endblock %}

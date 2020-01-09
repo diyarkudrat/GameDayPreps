@@ -15,7 +15,8 @@
           {% if request.user.is_authenticated %}
               <div class="text-white">Hello, {{ request.user.username }}</div>
               <a href="{% url 'roster-list-page' %}" class="btn btn-warning ml-4">Roster</a>
-              <a href="#" class="btn btn-warning ml-4">Schedule</a>
+              <a href="{% url 'attendance-list-page' %}" class="btn btn-warning ml-4">Attendance</a>
+              <a href="{% url 'event-list-page' %}" class="btn btn-warning ml-4">Schedule</a>
               <a href="{% url 'logout' %}" class="btn btn-danger ml-2">Log Out</a>
           {% else %}
               <a href="#" class="btn btn-warning ml-4">About</a>

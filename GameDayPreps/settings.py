@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
 
     'roster',
+    'events'
 ]
 
 LOGOUT_REDIRECT_URL = '/'

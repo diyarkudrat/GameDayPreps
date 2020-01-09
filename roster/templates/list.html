@@ -3,8 +3,8 @@
 
 {% block content %}
 
+{% if request.user.is_authenticated %}
 <a class="btn btn-outline-info" href="{% url 'player-create-page' %}" role="button">Add New Player</a>
-
   {% if players %}
     <table class="table">
       <thead>
@@ -22,11 +22,22 @@
           <td href="#">{{ player.first_name }} {{ player.last_name }}</td>
           <td>{{ player.position }}</td>
           <td>{{ player.grade }}</td>
-          <td><a class="btn btn-link" href="{% url 'player-detail-page' player.id %}" role="button">Edit</a></td>
+          <td><a class="btn btn-link" href="{% url 'player-detail-page' player.id %}" role="button">View</a></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+  {% endif %}
+  {% else %}
+  <div class="jumbotron">
+    <h1 class="display-4">Hello, world!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+  </div>
   {% endif %}
 
 

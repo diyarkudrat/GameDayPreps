@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Schedule</h1>
+<br>
+
+<form>
+    <fieldset disabled>
+        <div class="form-group">
+        <label>Event Type</label>
+        <input type="text" class="form-control" placeholder="{{ event.event_type }}">
+        </div>
+        <div class="form-group">
+        <label>Time</label>
+        <input type="text" class="form-control" placeholder="{{ event.time }}">
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" class="form-control" placeholder="{{ event.location }}">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" placeholder="{{ event.description }}">
+        </div>
+        <div class="form-group">
+            <label>Attendance</label>
+            {% for member in members %}
+            <input type="text" class="form-control" placeholder="{{ member }}">
+            {% endfor %}
+        </div>
+    </fieldset>
+
+  
+    <a class="btn btn-info" href="{% url 'edit-event-page' event.id %}" role="button">Edit</a>
+    <a class="btn btn-danger" href="{% url 'event-delete-page' event.id %}" role="button">Delete</a>
+  </form>
+
+{% endblock %}
