@@ -35,11 +35,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                {% for member in members %}
+                {% for player in players %}
+                    
                   <tr>
-                    <th scope="row">{{ member.player }}</th>
+                    <th scope="row">{{ player.first_name }} {{ player.last_name }}</th>
                     <td><select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
+                        <option selected>{{ stat.attendance_status }}</option>
                         <option>present</option>
                         <option>absent</option>
                         <option>tardy</option>
@@ -47,12 +48,13 @@
                       </select></td>
                   </tr>
                 </tbody>
+                   
                 {% endfor %}
               </table>
         </div>
 
   
-    <a class="btn btn-info" href="#" role="button">Submit</a>
+    <a type="submit" class="btn btn-info" href="#" role="button">Submit</a>
   </form>
 
 

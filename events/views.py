@@ -60,9 +60,14 @@ class EditEventView(UpdateView):
 
     def get(self, request, *args, **kwargs):
         event = get_object_or_404(Event, pk=kwargs['pk'])
-        members = Attendance.objects.all()
-        context = {'event': event, 'members': members}
+        players = Player.objects.filter(event=event)
+        status = Attendance.objects.filter(player__in=players, event=event)
+        context = {'event': event, 'status': status, 'players': players}
         return render(request, 'events_edit.html', context)
+
+    def post(self, request, *args, **kwargs):
+        pass
+        
 
 class EventDeleteView(DeleteView):
 
