@@ -27,7 +27,6 @@ class Player(models.Model):
     position = models.CharField(max_length=25)
     grade = models.CharField(max_length=50, choices=school_grade_choices, blank=True)
     jersey_number = models.CharField(max_length=3, null=True)
-    attendance_status = models.CharField(max_length=20, choices=attendance_choices, blank=True)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name

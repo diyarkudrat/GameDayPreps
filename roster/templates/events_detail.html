@@ -26,7 +26,7 @@
         <div class="form-group">
             <label>Attendance</label>
             {% for member in members %}
-            <input type="text" class="form-control" placeholder="{{ member }}">
+            <input type="text" class="form-control" placeholder="{{ member }} : {{ member.attendance_status }}">
             {% endfor %}
         </div>
     </fieldset>

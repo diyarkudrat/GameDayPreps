@@ -3,10 +3,59 @@
 
 {% block content %}
 
-<form method="post">{% csrf_token %}
+<!-- <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update">
-</form>
+</form> -->
+
+<form>
+        <div class="form-group">
+        <label>Event Type</label>
+        <input type="text" class="form-control" placeholder="{{ event.event_type }}">
+        </div>
+        <div class="form-group">
+        <label>Time</label>
+        <input type="text" class="form-control" placeholder="{{ event.time }}">
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" class="form-control" placeholder="{{ event.location }}">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" placeholder="{{ event.description }}">
+        </div>
+        <div>
+            <label>Attendance</label>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Attendance Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for member in members %}
+                  <tr>
+                    <th scope="row">{{ member.player }}</th>
+                    <td><select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Choose...</option>
+                        <option>present</option>
+                        <option>absent</option>
+                        <option>tardy</option>
+                        <option>excused</option>
+                      </select></td>
+                  </tr>
+                </tbody>
+                {% endfor %}
+              </table>
+        </div>
+
+  
+    <a class="btn btn-info" href="#" role="button">Submit</a>
+  </form>
+
+
 
 
 {% endblock %}

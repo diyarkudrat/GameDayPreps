@@ -10,8 +10,8 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView
 from django.http import HttpResponseRedirect
 from events.models import Event
-from events.forms import AttendanceForm
-from roster.models import Player
+from events.forms import AttendanceForm, EventForm
+from roster.models import Player, Attendance
 
 class EventListView(ListView):
     
@@ -48,11 +48,21 @@ class EventDetailView(View):
         return render(request, 'events_detail.html', context)
 
 class EditEventView(UpdateView):
-    model = Event
-    fields = ['event_type', 'location', 'time', 'description']
+    # model = Event
+    # fields = ['event_type', 'location', 'time', 'description', 'members']
 
-    template_name = 'events_edit.html'
-    success_url = reverse_lazy('event-list-page')
+    # template_name = 'events_edit.html'
+    # success_url = reverse_lazy('event-list-page')
+
+    #Attendance for player for specific event
+    # 1. Given event, get the player
+    # 2. Given event and player, get attendance
+
+    def get(self, request, *args, **kwargs):
+        event = get_object_or_404(Event, pk=kwargs['pk'])
+        members = Attendance.objects.all()
+        context = {'event': event, 'members': members}
+        return render(request, 'events_edit.html', context)
 
 class EventDeleteView(DeleteView):
 
