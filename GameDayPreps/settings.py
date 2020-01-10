@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
     'roster',
     'events',
-    'crispy_forms'
 ]
 
 LOGOUT_REDIRECT_URL = '/'
