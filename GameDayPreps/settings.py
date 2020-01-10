@@ -25,7 +25,7 @@ SECRET_KEY = 'lpdnxyk9+hzj8^ylv-+s%wpt^eq9fh*zgfj-fd45&9@wk=nfs$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'gamedaypreps-dk.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gamedaypreps-dk.herokuapp.com']
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
 
     'roster',
-    'events'
+    'events',
+    'crispy_forms'
 ]
 
 LOGOUT_REDIRECT_URL = '/'
