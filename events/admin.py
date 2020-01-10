@@ -4,6 +4,7 @@ from roster.models import Attendance, Player
 
 class AttendanceInLine(admin.StackedInline):
     model = Attendance
+    extra = 15
 
 
 class EventAdmin(admin.ModelAdmin):

@@ -50,11 +50,6 @@ class EventDetailView(View):
         return render(request, 'events_detail.html', context)
 
 class EditEventView(UpdateView):
-    # model = Event
-    # fields = ['event_type', 'location', 'time', 'description', 'members']
-
-    # template_name = 'events_edit.html'
-    # success_url = reverse_lazy('event-list-page')
 
     def get(self, request, *args, **kwargs):
         event = get_object_or_404(Event, pk=kwargs['pk'])
@@ -87,20 +82,12 @@ class EventAttendanceView(ListView):
           'events': events
         })
 
-class CreateAttendanceView(CreateView):
-    model = Event 
+class AttendanceView(View):
 
     def get(self, request, *args, **kwargs):
-
-        context = {'form': AttendanceForm()}
-        return render(request, 'new_attend.html', context)
-    
-    def post(self, request, *args, **kwargs):
-        form = AttendanceForm(request.POST)
-        if form.is_valid:
-            attendance = form.save()
-            return HttpResponseRedirect(reverse_lazy('event-list-page'))
- 
-        return render(request, 'new_attend.html', {'form': form})
+        event = get_object_or_404(Event, pk=kwargs['pk'])
+        members = Player.objects.all()
+        context = {'event': event, 'members': members}
+        return render(request, 'events_detail.html', context)
 
 

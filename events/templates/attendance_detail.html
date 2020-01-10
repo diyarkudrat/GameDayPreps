@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Schedule</h1>
+<br>
+
+<form>
+    <fieldset disabled>
+        <div class="form-group">
+            <label>Attendance</label>
+            {% for member in members %}
+            <input type="text" class="form-control" placeholder="{{ member }} : {{ member.attendance_status }}">
+            {% endfor %}
+        </div>
+    </fieldset>
+
+
+{% endblock %}
