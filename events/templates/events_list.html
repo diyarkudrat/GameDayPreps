@@ -16,7 +16,7 @@
       <p class="card-text">{{ event.time }}</p>
       <p class="card-text">{{ event.location }}</p>
       <a href="{% url 'event-detail-page' event.id %}" class="btn btn-primary">More Info</a>
-      <a href="{% url 'attendance-create-page' %}" class="btn btn-primary">Take Attendance</a>
+      <a href="{% url 'edit-event-page' event.id %}" class="btn btn-primary">Take Attendance</a>
     </div>
     <div class="card-footer text-muted">
     </div>

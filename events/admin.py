@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import Event
-from roster.models import Attendance
+from roster.models import Attendance, Player
 
-class AttendanceInLine(admin.TabularInline):
+class AttendanceInLine(admin.StackedInline):
     model = Attendance
-    extra = 10
+
 
 class EventAdmin(admin.ModelAdmin):
     inlines = (AttendanceInLine, )

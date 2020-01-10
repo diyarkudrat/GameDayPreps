@@ -54,10 +54,6 @@ class EditEventView(UpdateView):
     # template_name = 'events_edit.html'
     # success_url = reverse_lazy('event-list-page')
 
-    #Attendance for player for specific event
-    # 1. Given event, get the player
-    # 2. Given event and player, get attendance
-
     def get(self, request, *args, **kwargs):
         event = get_object_or_404(Event, pk=kwargs['pk'])
         players = Player.objects.all()
@@ -66,7 +62,12 @@ class EditEventView(UpdateView):
         return render(request, 'events_edit.html', context)
 
     def post(self, request, *args, **kwargs):
-        pass
+        form = EventForm(request.POST)
+        if form.is_valid:
+            attendance = form.save()
+            return HttpResponseRedirect(reverse_lazy('event-list-page'))
+        
+        return render(request, 'events_edit.html', {'form': form})
         
 
 class EventDeleteView(DeleteView):
