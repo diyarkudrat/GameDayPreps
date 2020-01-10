@@ -60,7 +60,7 @@ class EditEventView(UpdateView):
 
     def get(self, request, *args, **kwargs):
         event = get_object_or_404(Event, pk=kwargs['pk'])
-        players = Player.objects.filter(event=event)
+        players = Player.objects.all()
         status = Attendance.objects.filter(player__in=players, event=event)
         context = {'event': event, 'status': status, 'players': players}
         return render(request, 'events_edit.html', context)

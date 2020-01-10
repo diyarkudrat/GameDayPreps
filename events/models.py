@@ -13,7 +13,8 @@ event_types = (
 class Event(models.Model):
 
     event_type = models.CharField(max_length=50, choices=event_types, blank=True)
-    time = models.DateTimeField(null=True)
+    date = models.DateField(null=True)
+    time = models.TimeField(null=True)
     members = models.ManyToManyField(
         'roster.Player',
         through='roster.Attendance',

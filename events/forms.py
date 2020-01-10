@@ -6,7 +6,7 @@ class EventForm(forms.ModelForm):
 
     class Meta:
         model = Event
-        fields = ('event_type', 'location', 'time', 'description', )
+        fields = ('event_type', 'location','date', 'time', 'description', )
 
 class AttendanceForm(forms.ModelForm):
 
