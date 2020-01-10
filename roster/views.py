@@ -16,7 +16,7 @@ class RosterListView(ListView):
     def get(self, request):
         players = self.get_queryset()
         return render(request, 'list.html', {
-          'players': players
+          'players': players,
         })
 
 class PlayerCreateView(CreateView):

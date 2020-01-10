@@ -19,8 +19,10 @@ class EventListView(ListView):
 
     def get(self, request):
         events = self.get_queryset()
+        event_order = Event.objects.all().order_by('date')
         return render(request, 'events_list.html', {
-          'events': events
+          'events': events,
+          'event_order': event_order
         })
 
 class EventCreateView(CreateView):

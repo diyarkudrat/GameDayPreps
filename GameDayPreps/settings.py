@@ -25,7 +25,7 @@ SECRET_KEY = 'lpdnxyk9+hzj8^ylv-+s%wpt^eq9fh*zgfj-fd45&9@wk=nfs$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'gamedaypreps-dk.herokuapp.com']
 
 
 # Application definition
@@ -127,4 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
 
