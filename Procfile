@@ -1,1 +1,1 @@
-gunicorn  GameDayPreps:application -b xx.xxx.xxx.xx:8000
+web: gunicorn GameDayPreps.wsgi --log-file -
